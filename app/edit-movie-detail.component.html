@@ -1,0 +1,46 @@
+<div *ngIf="movie">
+	<div class="row">
+		<div class="col-md-8">
+			<h2>{{movie.name}}</h2>
+			<p>({{movie.mpaaRating.type}}: {{movie.mpaaRating.label}})</p>
+		</div>
+	</div>
+	<hr>
+  	<div class="row">
+		<div class="col-md-4">
+			<img src="{{movie.imgPath}}" />
+		</div>
+		<div class="col-md-8">
+			<form>
+				<div class="form-group">
+		      		<label for="language">Language</label>
+        			<select [(ngModel)]="movie.language" class="form-control">
+        				<option *ngFor="let lang of languages" [value]="lang">{{lang}}</option>
+  					</select>
+		      	</div>
+				<div class="form-group">
+					<label for="audience">Audience</label>
+        			<select [(ngModel)]="movie.mpaaRating.type" class="form-control">
+        				<option *ngFor="let au of audiences" [value]="au">{{au}}</option>
+  					</select>
+		      	</div>
+				<div class="form-group">
+					<label for="duration">Duration</label>
+        			<input [(ngModel)]="movie.duration" type="number" class="form-control">
+		      	</div>
+				<div class="form-group">
+		      		<label for="userrating">User Rating</label>
+        			<select [(ngModel)]="movie.userRating" class="form-control">
+        				<option *ngFor="let ur of userratings" [value]="ur">{{ur}}</option>
+  					</select>
+		      	</div>
+		      	<div class="form-group">
+					<label for="description">Description</label>
+        			<textarea [(ngModel)]="movie.description" rows="7" type="text" class="form-control"></textarea>
+		      	</div>
+		  		<hr>
+		  		<button type="submit" class="btn btn-default left submit-movie">Submit changes</button>
+		  	</form>
+		</div>
+	</div>
+</div>
